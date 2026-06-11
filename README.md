@@ -58,15 +58,8 @@ summarized:
 | Charge Section Code | VARCHAR | 212A2C | 241a9 | 125 |  | 8,458,563 | 34.42 |
 | Anonymized Identifier | VARCHAR | 0000006d23db86858bf081aa7482940341ac9983 | fffffd02ff3b012bbca32c29ec95b106d89f33f0 | 3,128,669 |  | 8,458,563 | 0.42 |
 
-Notes:
 
-Even though there are 855,610 values for "Detention ID",
-the most common value '(b)(6)(b)(7)(c)' appears in 5,645,755 rows,
-and the second most common '(b)(6),(b)(7)(c)' appears in 1,999,717 rows.
 
-The third and following most common values appear no more than 5 times.
-
-So this column is also annonimised like a lot of others, and probably isn't worth taking into account.
 
 #### **removals_2011_2023.csv (1.22 GB)**
 
