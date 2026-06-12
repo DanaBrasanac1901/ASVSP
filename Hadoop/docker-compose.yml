@@ -1,0 +1,44 @@
+networks:
+  asvsp:
+    name: asvsp
+    external: true
+
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    hostname: namenode
+    ports:
+      - 9870:9870
+      - 9000:9000
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=datalake
+    env_file:
+      - .env
+    networks:
+      - asvsp
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9870"]
+      interval: 20s
+      timeout: 10s
+      retries: 5
+
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    hostname: datanode
+    volumes:
+      - hadoop_datanode:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - .env
+    networks:
+      - asvsp
+      
+volumes:
+  hadoop_namenode:
+  hadoop_datanode:
